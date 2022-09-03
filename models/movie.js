@@ -26,7 +26,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле постер должно быть заполнено'],
     validate: {
-      validator: (v) => validator.isUrl(v),
+      validator: (v) => validator.isURL(v),
       message: 'Неправильный формат ссылки',
     },
   },
@@ -34,7 +34,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле трейлер должно быть заполнено'],
     validate: {
-      validator: (v) => validator.isUrl(v),
+      validator: (v) => validator.isURL(v),
       message: 'Неправильный формат ссылки',
     },
   },
@@ -42,7 +42,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле превью постера должно быть заполнено'],
     validate: {
-      validator: (v) => validator.isUrl(v),
+      validator: (v) => validator.isURL(v),
       message: 'Неправильный формат ссылки',
     },
   },

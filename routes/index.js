@@ -1,5 +1,5 @@
 const express = require('express');
-const { celebrate, Joi } = require('celebrate');
+const { loginValidator, createUserValidator } = require('../utils/celebrateValidator');
 const { login, createUser } = require('../controller/users');
 const { NotFoundError } = require('../errors/errors');
 const auth = require('../middlewares/auth');
@@ -10,24 +10,13 @@ router.use(express.json());
 
 router.post(
   '/signin',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().email().required(),
-      password: Joi.string().required(),
-    }),
-  }),
+  loginValidator,
   login,
 );
 
 router.post(
   '/signup',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().email().required(),
-      password: Joi.string().required(),
-      name: Joi.string().required().min(2).max(30),
-    }),
-  }),
+  createUserValidator,
   createUser,
 );
 

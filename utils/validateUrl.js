@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const validator = require('validator');
 const BadRequestError = require('../errors/errors');
 
@@ -10,4 +9,4 @@ const validateUrl = (value) => {
   return value;
 };
 
-module.exports = validateUrl;
+module.exports = { validateUrl };
