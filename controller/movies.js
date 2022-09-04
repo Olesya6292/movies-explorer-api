@@ -4,7 +4,6 @@ const {
   NotFoundError,
   BadRequestError,
   ForbiddenError,
-  ConflictError,
 } = require('../errors/errors');
 
 module.exports.getMovies = async (req, res, next) => {
@@ -31,13 +30,6 @@ module.exports.addMovie = async (req, res, next) => {
       nameRU,
       nameEN,
     } = req.body;
-    const movieSaved = await Movie.find({
-      movieId,
-      owner: req.user._id,
-    });
-    if (movieSaved.length !== 0) {
-      return next(new ConflictError('Фильм уже сохранен'));
-    }
     const movie = await Movie.create({
       country,
       director,

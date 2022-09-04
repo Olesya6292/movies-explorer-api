@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://ionova.nomoredomains.sbs',
-  'http://ionova.nomoredomains.sbs',
+  'https://diploma.ionova.nomoredomains.sbs',
+  'http://diploma.ionova.nomoredomains.sbs',
   'http://localhost:3000',
   'https://localhost:3000',
 ];
