@@ -16,7 +16,13 @@ const app = express();
 
 app.use(requestLogger);
 
-app.use(helmet());
+//app.use(helmet());
+
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+  })
+);
 
 app.use(limiter);
 
