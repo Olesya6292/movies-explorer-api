@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://diploma.ionova.nomoredomains.sbs',
-  'http://diploma.ionova.nomoredomains.sbs',
+  'https://movies-explorer-api-pra8.onrender.com',
+  'http://movies-explorer-api-pra8.onrender.com',
   'http://localhost:3000',
   'https://localhost:3000',
 ];
