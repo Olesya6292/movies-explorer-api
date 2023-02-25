@@ -10,42 +10,28 @@ const { errorsHandler } = require('./middlewares/errorsHandler');
 const limiter = require('./utils/limiter');
 const router = require('./routes');
 
-const { PORT, MONGO_URL } = require('./utils/config');
+const { PORT, DATABASE_URL } = require('./utils/config');
 
 const app = express();
 
-app.use(requestLogger);
-
-//app.use(helmet());
-
-app.use(
-  helmet({
-    crossOriginResourcePolicy: false,
-  })
-);
-
-app.use(limiter);
-
-app.use(cors());
-
-app.use(router);
-
-app.use(errorLogger);
-
-app.use(errors());
-
-app.use(errorsHandler);
-
 mongoose
-  .connect(MONGO_URL, {
-    useNewUrlParser: true,
-  })
+  .connect(DATABASE_URL)
   .then(() => {
-    console.log('Connected to db');
+    console.log(`Connected to database on ${DATABASE_URL}`);
   })
   .catch(() => {
     console.log('Error to db connection');
   });
+
+app.use(limiter);
+app.use(cors());
+app.use(requestLogger);
+app.use(helmet());
+app.use(router);
+
+app.use(errorLogger);
+app.use(errors());
+app.use(errorsHandler);
 
 app.listen(PORT, () => {
   console.log(`Server listen on ${PORT}`);
